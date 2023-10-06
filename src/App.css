@@ -1,38 +1,289 @@
-.App {
+/* login-form.css */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.login-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #cce0e8;
+}
+
+.login-title {
+  font-size: 24px;
+  margin-bottom: 20px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.desc, .desc .link {
+  padding: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.desc {
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  color: #747474;
+  display: flex;
+  font-size: .8rem;
+  justify-content: space-between!important;
+  width: 100%!important;
+}
+
+.d1{
+  margin-bottom: 50px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login-button {
+  margin-left: 125px;
+  width: 25%;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.form-control.search-input {
+  max-width: 200px;
+}
+
+/* SignUp.css (create a new CSS file named SignUp.css) */
+
+/* Container for the sign-up form */
+
+.signup-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #cce0e8;
+}
+
+/* Form title */
+
+.signup-title {
+  font-family: Poppins,sans-serif;
+  border-radius: 10px;
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Form fields */
+
+.signup-form-group {
+  margin-bottom: 15px;
+}
+
+.signup-label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+
+.signup-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Submit button */
+
+.signup-button {
+  margin-left: 125px;
+  width: 25%;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Error message */
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.select{
+  border-radius: 5px;
+}
+
+#b1{
+  border-color: var(--_bu-filled-bc);
+  background-color: var(--_bu-filled-bg);
+  color: var(--_bu-filled-fc);
+  transition: background-color 0.3s ease;
+}
+
+#b1:hover {
+  background-color: rgb(61, 222, 228);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+#b2:hover {
+  background-color: rgb(61, 222, 228);
+  color: white;
+}
+#b3:hover {
+  background-color: rgb(61, 222, 228);
+  color: white;
+}
+#b2{
+  border-color: rgb(9, 9, 37);
+  background-color: rgb(6, 92, 125);
+  color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.logo{
+  width: 50px;
+}
+
+/* CSS for your cards */
+
+.my-5 {
+  padding: 8px;
+  margin-bottom: 5rem; /* Adjust the margin as needed */
+}
+.card-container {
+  height: 100%; /* Set a fixed height for all card-containers */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  position: relative;
+}
+
+.c1 {
+  position: relative; /* Position relative for positioning absolute elements inside */
+  width: calc(20% - 1rem); /* Adjust the width of each card as needed */
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.row-cart {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem; /* Adjust the gap between cards as needed */
+}
+
+.card-img-container {
+  height: 60%; /* Set a fixed height for the image container */
+  overflow: hidden;
+}
+
+.card-details {
+  /* padding: 1rem; */
+  display: flex;
+  flex-direction: column;
+  height: 40%; /* Set a fixed height for the content and buttons container */
+  position: relative;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 20%;
+}
+
+.card.img {
+  width: 100%;
+  height: 50%; /* Let the height adjust proportionally to the image width */
+  object-fit: cover;
+}
+
+.card-content {
+  background-image: url('https://images.pexels.com/photos/1007025/pexels-photo-1007025.jpeg?auto=compress&cs=tinysrgb&w=600');
+  text-align: center;
+  flex-grow: 1; /* Allow content to grow and take up available space within the card */
+  margin: 1px;
+}
+
+.card-title {
+  font-size: 1.05rem;
+  margin: 1px;
+  min-height: 40px;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 0rem !important;
+}
+
+.card-genre {
+  margin: 2px;
+}
+
+.card-price {
+  font-size: 0.9rem;
+  color: #007bff;
+}
+
+.card-genre {
+  /* font-size: 1.05rem; */
+  margin: 2px;
+}
+
+.b1{
+  padding-left: 10px;
+  margin-left: 20px;
+  margin-bottom: 8px;
+  background-color: #fff;
+}
+.add-to-cart,
+.buy-now {
+  width: 40%; /* Add this line to make both buttons the same width */
+  padding: 3px;
+  margin-right: 0.8rem;
+  border-radius: 5px;
+  border-color: var(--_bu-filled-bc);
+  background-color: var(--_bu-filled-bg);
+  color: var(--_bu-filled-fc);
+  transition: background-color 0.3s ease;
+}
+.buy-now {
+  color: black;
+  background-color: rgb(231, 231, 14);
+}
+.add-to-cart{
+  background-color: #0056b3;
+  color: white;
+}
+.add-to-cart:hover {
+  background-color: rgb(31, 171, 226); /* Darker shade of the button color on hover */
+  transform: scale(1.05); /* Slightly scale up the button on hover */
+}
+.buy-now:hover {
+  background-color: green; /* Darker shade of the button color on hover */
+  transform: scale(1.05); /* Slightly scale up the button on hover */
 }
