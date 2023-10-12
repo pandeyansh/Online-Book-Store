@@ -70,7 +70,9 @@
 .form-control.search-input {
   max-width: 200px;
 }
-
+.error-message{
+  color: red;
+}
 /* SignUp.css (create a new CSS file named SignUp.css) */
 
 /* Container for the sign-up form */
@@ -169,6 +171,7 @@
 
 .logo{
   width: 50px;
+  margin-left: -333px;
 }
 
 /* CSS for your cards */
@@ -269,7 +272,7 @@ p {
   border-color: var(--_bu-filled-bc);
   background-color: var(--_bu-filled-bg);
   color: var(--_bu-filled-fc);
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease; 
 }
 .buy-now {
   color: black;

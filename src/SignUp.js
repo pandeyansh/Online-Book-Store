@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import './App.css'; // Import the CSS file
-import { Link, useNavigate} from 'react-router-dom';
+import './App.css';
+import { Link, useNavigate } from 'react-router-dom';
 
 function SignUpForm() {
   const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [role, setRole] = useState(''); // Default role is 'buyer'
-  const [error, setError] = useState(null); // State for displaying errors
+  const [roles, setRole] = useState('');
+  const [error, setError] = useState(null);
 
   const navigate = useNavigate();
 
@@ -16,8 +16,8 @@ function SignUpForm() {
     setName(e.target.value);
   };
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);
   };
 
   const handlePasswordChange = (e) => {
@@ -35,42 +35,32 @@ function SignUpForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validate passwords
     if (password !== confirmPassword) {
       setError('Passwords do not match.');
       return;
     }
 
-    // Add your signup logic here, such as making an API request
     try {
-      const response = await fetch('http://localhost:8081/users/register', {
+      const response = await fetch('http://192.168.68.32:8081/api/po', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name, email, password, role, confirmPassword }),
+        body: JSON.stringify({ name, username, password, roles }),
       });
 
       if (response.ok) {
-        // Successful signup, you can redirect or perform other actions here
         window.alert('Signup successful. Please log in.');
         navigate('/login');
       } else {
-        // Handle signup errors, e.g., duplicate email
         const data = await response.json();
-        console.error('Signup failed:', data); // Log the error response from the server
+        console.error('Signup failed:', data);
         setError(data.error || 'An error occurred during signup.');
       }
     } catch (error) {
       console.error('An error occurred during signup:', error);
       setError('An error occurred during signup.');
     }
-
-    console.log('Name:', name);
-    console.log('Email:', email);
-    console.log('Password:', password);
-    console.log('Confirm Password:', confirmPassword);
-    console.log('Role:', role);
   };
 
   return (
@@ -90,12 +80,12 @@ function SignUpForm() {
           />
         </div>
         <div className="form-group">
-          <label className="form-label">Email:</label>
+          <label className="form-label">Username:</label>
           <input
-            placeholder='Email*'
-            type="email"
-            value={email}
-            onChange={handleEmailChange}
+            placeholder='Username*'
+            type="text"
+            value={username}
+            onChange={handleUsernameChange}
             className="form-input"
             required
           />
@@ -125,7 +115,7 @@ function SignUpForm() {
         <div className="form-group">
           <label className="form-label">Role:</label>
           <select
-            value={role}
+            value={roles}
             onChange={handleRoleChange}
             className="form-input"
             required

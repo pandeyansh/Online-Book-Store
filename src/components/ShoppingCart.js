@@ -17,7 +17,7 @@ function ShoppingCart() {
               <div key={book.id} className='c2'>
                 <img src={book.imageUrl} alt={book.title} height={300} width={200} className="cart-img" />
                 <h4>{book.title}</h4>
-                <h5>Price: ${book.price}</h5>
+                <h5>Price: ₹ {book.price}</h5>
                 <button onClick={() => removeBookFromCart(book.id)}>Remove</button>
               </div>
             ))}

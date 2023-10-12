@@ -1,33 +1,27 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../App.css';
 import img from '../BookLogo.png';
 import Footer from './Footer';
 import ImageSlider from './ImageSlider';
 import { useCart } from './CartContext';
+import Sidebar from './SideBar';
 
-function BookCatalog({ addBook }) {
+function BookCatalog() {
   const [books, setBooks] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [filterGenre, setFilterGenre] = useState('');
   const [filterAuthor, setFilterAuthor] = useState('');
-  const { addBookToCart, cart } = useCart(); // Destructure cart directly from useCart
+  const { addBookToCart, cart } = useCart();
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(true); // Loading state
-  const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('http://192.168.68.47:8081/books/all')
+    fetch('http://192.168.68.19:8082/books/all')
       .then((response) => response.json())
       .then((data) => {
         setBooks(data);
-        setIsLoading(false); // Data is loaded
       });
   }, []);
-
-  const handleAddToCart = (book) => {
-    addBookToCart(book);
-  };
 
   const handleToggleCart = () => {
     setIsCartOpen(!isCartOpen);
@@ -60,8 +54,9 @@ function BookCatalog({ addBook }) {
 
   return (
     <div>
-      <nav className="navbar bg-body-tertiary">
+      <nav className="navbar bg-body-tertiary fixed-top">
         <div className="container-fluid">
+          <Sidebar pageWrapId={'page-wrap'} outerContainerId={'outer-container'} />
           <a className="navbar-brand" href="/">
             <img src={img} alt="Logo" className="logo" />
           </a>
@@ -90,7 +85,7 @@ function BookCatalog({ addBook }) {
               ))}
             </select>
             <Link to="/login">
-              <button className="btn btn-outline-success me-2" type="button"id='b3'>
+              <button className="btn btn-outline-success me-2" type="button" id="b3">
                 Log In
               </button>
             </Link>
@@ -100,10 +95,10 @@ function BookCatalog({ addBook }) {
               </button>
             </Link>
             <Link to="/ShoppingCart">
-            <div className="cart-icon" onClick={handleToggleCart}>
-          <i className="fas fa-shopping-cart fa-lg mx-2"></i>
-          <span className="cart-item-count">{cart.length}</span>
-        </div>
+              <div className="cart-icon" onClick={handleToggleCart}>
+                <i className="fas fa-shopping-cart fa-lg mx-2"></i>
+                <span className="cart-item-count">{cart.length}</span>
+              </div>
             </Link>
           </form>
         </div>
@@ -127,7 +122,8 @@ function BookCatalog({ addBook }) {
           <button onClick={handleToggleCart}>Close Cart</button>
         </div>
       )}
-      <div style={{ margin: '30px 0' }}>
+      <div style={{ marginTop: '100px' }}>
+        {/* Add some margin to the top to prevent content from being hidden behind the fixed navigation */}
         <ImageSlider />
       </div>
       <div className="my-5">
@@ -142,7 +138,6 @@ function BookCatalog({ addBook }) {
                     <p className="card-price">Price: ₹ {book.price}</p>
                     <p className="card-author">Author: {book.author}</p>
                     <p className="card-genre">{book.genre}</p>
-                    {/* Add to Cart button with onClick handler */}
                     <div className="b1">
                       <button className="add-to-cart" onClick={() => addBookToCart(book)}>
                         Add to Cart
@@ -162,3 +157,4 @@ function BookCatalog({ addBook }) {
 }
 
 export default BookCatalog;
+  
