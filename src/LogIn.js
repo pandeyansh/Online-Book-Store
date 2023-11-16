@@ -2,54 +2,49 @@ import React, { useState } from 'react';
 import './App.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from './components/useAuth';
-
+import './components/Background.css';
 function LogIn() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const [error, setError] = useState(null);
   const { login } = useAuth();
-
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
-    setError(null); // Clear any previous error
+    setError(null);
   };
-
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
-    setError(null); // Clear any previous error
+    setError(null);
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(null); // Clear any previous error
-
+    setError(null);
     try {
-      const response = await fetch('http://192.168.68.32:8081/api/login', {
+      const response = await fetch('http://192.168.68.16:8081/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ username, password }),
       });
-
       if (response.ok) {
         const userData = await response.json();
         login(userData);
-        navigate('/dashboard');
+        navigate('/buyer');
       } else {
         const data = await response.json();
         setError(data.message || 'Authentication failed');
-        setUsername(''); // Clear the username field
-        setPassword(''); // Clear the password field
+        setUsername('');
+        setPassword('');
       }
     } catch (error) {
       console.error('An error occurred during login:', error);
       setError('Invalid Login credentials!');
     }
   };
-
   return (
+    <div className='background-container'>
     <div className="login-container">
       <h2 className="login-title">Login</h2>
       <form onSubmit={handleSubmit}>
@@ -91,7 +86,7 @@ function LogIn() {
         </div>
       </form>
     </div>
+    </div>
   );
 }
-
 export default LogIn;

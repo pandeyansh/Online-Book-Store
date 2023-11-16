@@ -1,0 +1,16 @@
+@keyframes backgroundSlide {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 100% 50%;
+    }
+  }
+  .background-container {
+    background: linear-gradient(45deg, #233833, #7d66ff, #06D6A0, #118AB2, #073B4C);
+    background-size: 400% 400%;
+    animation: backgroundSlide 30s linear infinite;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+  }

@@ -1,19 +1,16 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
 function ImageSlider() {
     const settings = {
-      // Customize slider settings here
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 1, // Show one slide at a time
+        slidesToShow: 1,
         slidesToScroll: 1,
-        autoplay: true, // Enable autoplay
-        autoplaySpeed: 3000, // Set autoplay interval in milliseconds (3 seconds)
+        autoplay: true,
+        autoplaySpeed: 3000, 
     };
-  
     return (
       <div className="image-slider">
         <Slider {...settings}>
@@ -38,7 +35,6 @@ function ImageSlider() {
           <div>
             <img src="https://www.bookswagon.com/bannerimages/86_inr.jpg?v=2.5" alt="Image 3" />
           </div>
-          {/* Add more slider items as needed */}
         </Slider>
       </div>
     );

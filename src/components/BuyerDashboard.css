@@ -1,0 +1,106 @@
+.logo1 {
+    width: 100px;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.category {
+    padding: 10px 20px;
+    border-right: 1px solid red;
+    font-weight: bold;
+}
+.category:last-child {
+    border: none;
+}
+hr {
+    border: none;
+    border-top: 2px solid red !important;
+    margin: 10px auto;
+    width: 1500px;
+}
+.my-account-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+}
+.account-item {
+    text-align: center;
+    margin: 5px;
+    border:1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 15px;
+    height: 162px;
+    width: 388px;
+    margin-left: 100pxpx;
+}
+.p1{
+    margin-left: 40px;
+    font-size: calc(1.375rem + 1.5vw);
+    font-family: 'Conv_Cambria Italic';
+    margin-top: 80px;
+    margin-bottom:10px ;
+}
+.main-container{
+    margin-left: 100px;
+    margin-right: 100px;
+}
+.account-item {
+    transition: transform 0.2s ease;
+}
+.account-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background-color: #f0f0f0;
+}
+.category {
+    transition: background-color 0.2s ease;
+}
+.category:hover {
+    background-color: lightgray;
+}
+.book-element {
+    position: relative;
+}
+.book-title {
+    font-weight: bold;
+}
+.dropbtn {
+    background-color: #3498db;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+.category.dropdown {
+    position: relative;
+}
+.category.dropdown .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.category.dropdown:hover .dropdown-content {
+    display: block;
+}
+.category.dropdown .dropdown-content a {
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    color: #333;
+}
+.category.dropdown .dropdown-content a:hover {
+    background-color: #3498db;
+    color: white;
+}

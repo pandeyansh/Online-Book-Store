@@ -6,7 +6,6 @@ import Footer from './Footer';
 import ImageSlider from './ImageSlider';
 import { useCart } from './CartContext';
 import Sidebar from './SideBar';
-
 function BookCatalog() {
   const [books, setBooks] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -14,46 +13,38 @@ function BookCatalog() {
   const [filterAuthor, setFilterAuthor] = useState('');
   const { addBookToCart, cart } = useCart();
   const [isCartOpen, setIsCartOpen] = useState(false);
-
   useEffect(() => {
-    fetch('http://192.168.68.19:8082/books/all')
+    fetch('http://192.168.68.49:8081/books/all')
       .then((response) => response.json())
       .then((data) => {
         setBooks(data);
       });
   }, []);
-
   const handleToggleCart = () => {
     setIsCartOpen(!isCartOpen);
   };
-
   const handleGenreFilter = (e) => {
     const genreValue = e.target.value;
     setFilterGenre(genreValue);
   };
-
   const handleAuthorFilter = (e) => {
     const authorValue = e.target.value;
     setFilterAuthor(authorValue);
   };
-
   const handleSearch = (e) => {
     const query = e.target.value.toLowerCase();
     setSearchQuery(query);
   };
-
   const filterBooks = books.filter((book) => {
     const titleMatch = book.title.toLowerCase().includes(searchQuery);
     const genreMatch = filterGenre === '' || book.genre.toLowerCase() === filterGenre.toLowerCase();
     const authorMatch = filterAuthor === '' || book.author.toLowerCase() === filterAuthor.toLowerCase();
     return titleMatch && genreMatch && authorMatch;
   });
-
   const uniqueAuthors = Array.from(new Set(books.map((book) => book.author)));
   const uniqueGenres = Array.from(new Set(books.map((book) => book.genre)));
-
   return (
-    <div>
+    <div id='maindiv'>
       <nav className="navbar bg-body-tertiary fixed-top">
         <div className="container-fluid">
           <Sidebar pageWrapId={'page-wrap'} outerContainerId={'outer-container'} />
@@ -97,7 +88,7 @@ function BookCatalog() {
             <Link to="/ShoppingCart">
               <div className="cart-icon" onClick={handleToggleCart}>
                 <i className="fas fa-shopping-cart fa-lg mx-2"></i>
-                <span className="cart-item-count">{cart.length}</span>
+               <span className="cart-item-count">{cart.length}</span>
               </div>
             </Link>
           </form>
@@ -123,7 +114,6 @@ function BookCatalog() {
         </div>
       )}
       <div style={{ marginTop: '100px' }}>
-        {/* Add some margin to the top to prevent content from being hidden behind the fixed navigation */}
         <ImageSlider />
       </div>
       <div className="my-5">
@@ -132,7 +122,7 @@ function BookCatalog() {
             <div key={book.id} className="c1">
               <div className="card-container">
                 <div className="card">
-                  <img src={book.imageUrl} alt={book.title} height={300} width={200} className="card-img" />
+                  <img src={book.imageUrl} alt={book.title} height={300} width={250} className="card-img" />
                   <div className="card-content">
                     <h3 className="card-title">{book.title}</h3>
                     <p className="card-price">Price: ₹ {book.price}</p>
@@ -155,6 +145,4 @@ function BookCatalog() {
     </div>
   );
 }
-
 export default BookCatalog;
-  

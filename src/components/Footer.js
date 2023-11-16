@@ -1,12 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFacebook,
-  faInstagram,
-  faTwitter,
-} from "@fortawesome/free-brands-svg-icons";
-import "./Footer.css"; // Import your CSS file for styling
-
+import { faFacebook, faInstagram, faTwitter } from "@fortawesome/free-brands-svg-icons";
+import "./Footer.css";
 function Footer() {
   return (
     <footer className="bookstore-footer">
@@ -42,28 +37,24 @@ function Footer() {
                 <a href="#">Contact Us</a>
               </li>
             </ul>
-<div className="t1">
-<div className="t2">
-            <h4>Contact Us</h4>
-            <p>
-              <strong>Address: </strong>rajiv chock metro station, Delhi
-            </p>
-            <p>
-              Phone: 9057XXXXXXXX
-            </p>
-            <p>
-              <strong>Email:</strong> BookStore@gmail.com
-            </p>
+          </div>
+          <div className="col-md-4">
+            <div className="contact-section">
+              <h4>Contact Us</h4>
+              <p>
+                <strong>Address: </strong>Rajiv Chowk Metro Station, Delhi
+              </p>
+              <p>Phone: 9057XXXXXXXX</p>
+              <p>
+                <strong>Email:</strong> BookStore@gmail.com
+              </p>
             </div>
-          
           </div>
-          </div>
-          
-           
-         
-          
+        </div>
+        </div>
+        <div className="row">
           <div className="col-md-12">
-            <div className="">
+            <div className="connect-section">
               <h4>Connect With Us</h4>
               <p>
                 Stay updated with the latest news, promotions, and book releases
@@ -89,12 +80,7 @@ function Footer() {
             </div>
           </div>
         </div>
-    
-         
-        </div>
-      
     </footer>
   );
 }
-
 export default Footer;

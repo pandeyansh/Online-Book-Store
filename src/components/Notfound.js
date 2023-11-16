@@ -1,5 +1,4 @@
 import React from 'react'
-
 const Notfound = () => {
   return (
     <div>
@@ -9,5 +8,4 @@ const Notfound = () => {
     </div>
   )
 }
-
-export default Notfound
+export default Notfound;

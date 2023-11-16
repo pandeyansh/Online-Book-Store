@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import { Link, useNavigate } from 'react-router-dom';
-
+import './components/Background.css';
 function SignUpForm() {
   const [name, setName] = useState('');
   const [username, setUsername] = useState('');
@@ -9,46 +9,36 @@ function SignUpForm() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [roles, setRole] = useState('');
   const [error, setError] = useState(null);
-
   const navigate = useNavigate();
-
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
-
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
   };
-
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
-
   const handleConfirmPasswordChange = (e) => {
     setConfirmPassword(e.target.value);
   };
-
   const handleRoleChange = (e) => {
     setRole(e.target.value);
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (password !== confirmPassword) {
       setError('Passwords do not match.');
       return;
     }
-
     try {
-      const response = await fetch('http://192.168.68.32:8081/api/po', {
+      const response = await fetch('http://192.168.68.16:8081/api/po', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ name, username, password, roles }),
       });
-
       if (response.ok) {
         window.alert('Signup successful. Please log in.');
         navigate('/login');
@@ -62,8 +52,8 @@ function SignUpForm() {
       setError('An error occurred during signup.');
     }
   };
-
   return (
+    <div className='background-container'>
     <div className="login-container">
       <h2 className="login-title">Sign Up</h2>
       {error && <p className="error">{error}</p>}
@@ -140,7 +130,7 @@ function SignUpForm() {
         </div>
       </form>
     </div>
+    </div>
   );
 }
-
 export default SignUpForm;
